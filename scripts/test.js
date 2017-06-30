@@ -32,9 +32,9 @@ Sporks.prototype._errShouldEql = function (expErr, actErr) {
 };
 
 // If err.message is falsy then only ensures that both errors are of the same type
-Sporks.prototype.shouldThrow = function (fun, err) {
+Sporks.prototype.shouldThrow = function (promise, err) {
   var self = this;
-  return fun().then(function () {
+  return promise().then(function () {
     self.never();
   }).catch(function (_err) {
     self._errShouldEql(err, _err);
@@ -50,13 +50,13 @@ Sporks.prototype.shouldNonPromiseThrow = function (fun, err) {
   }
 };
 
-Sporks.prototype.shouldDoAndOnce = function (promiseFactory, emitter, evnt) {
+Sporks.prototype.shouldDoAndOnce = function (promise, emitter, evnt) {
   var self = this,
     err = true;
 
   return new Promise(function (resolve, reject) {
 
-    promiseSporks.doAndOnce(promiseFactory, emitter, evnt).then(function (args) {
+    promiseSporks.doAndOnce(promise, emitter, evnt).then(function (args) {
       err = false;
 
       // We've received the event so resolve now instead of waiting for the timeout
@@ -73,11 +73,11 @@ Sporks.prototype.shouldDoAndOnce = function (promiseFactory, emitter, evnt) {
 };
 
 // Execute promise and wait to make sure that event is not emitted
-Sporks.prototype.shouldDoAndNotOnce = function (promiseFactory, emitter, evnt) {
+Sporks.prototype.shouldDoAndNotOnce = function (promise, emitter, evnt) {
   var self = this,
     err = false;
 
-  promiseSporks.doAndOnce(promiseFactory, emitter, evnt).then(function () {
+  promiseSporks.doAndOnce(promise, emitter, evnt).then(function () {
     err = true;
   });
 

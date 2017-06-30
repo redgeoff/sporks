@@ -26,8 +26,8 @@ Sporks.prototype.throwIfErrorNot = function (err, errName) {
 
 // This function provides an easy way to ignore errors without the need to test the error branch.
 // This function should be used sparingly as its use can make it hard to track down errors.
-Sporks.prototype.ignoreError = function (promiseFactory) {
-  return promiseFactory().catch(function () {
+Sporks.prototype.ignoreError = function (promise) {
+  return promise().catch(function () {
     // Do nothing as we are ignoring the error
   });
 };
