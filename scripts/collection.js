@@ -63,7 +63,7 @@ Sporks.prototype.keys = function (obj) {
 };
 
 Sporks.prototype.flip = function (obj) {
-  var values = [];
+  var values = {};
   this.each(obj, function (value, key) {
     values[value] = key;
   });

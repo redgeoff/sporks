@@ -58,4 +58,19 @@ describe('collection', function () {
     sporks.merge(null, null).should.eql({});
   });
 
+  it('should get length', function () {
+    sporks.length({}).should.eql(0);
+    sporks.length({ a: 1, b: 2}).should.eql(2);
+  });
+
+  it('should get length', function () {
+    sporks.keys({}).should.eql([]);
+    sporks.keys({ a: 1, b: 2}).should.eql([ 'a', 'b' ]);
+  });
+
+  it('should flip', function () {
+    sporks.flip({}).should.eql({});
+    sporks.flip({ a: '1', b: 2}).should.eql({ '1': 'a', '2': 'b' });
+  });
+
 });
