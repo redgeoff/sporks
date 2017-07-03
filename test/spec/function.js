@@ -12,4 +12,18 @@ describe('function', function () {
     list(1, 2, 3).should.eql([1, 2, 3]);
   });
 
+  it('should copy specific functions', function () {
+    var a = {
+      foo: function () {},
+      bar: function () {}
+    };
+
+    var b = {};
+
+    sporks.mix(a, b, ['foo']);
+
+    (b.foo === undefined).should.eql(false);
+    (b.bar === undefined).should.eql(true);
+  });
+
 });
