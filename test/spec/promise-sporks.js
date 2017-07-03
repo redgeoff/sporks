@@ -11,7 +11,7 @@ describe('promise', function () {
       ms = 10;
     return sporks.timeout(ms).then(function () {
       var t2 = (new Date()).getTime();
-      (t2 - t1 > ms).should.eql(true);
+      (t2 - t1 >= ms).should.eql(true);
     });
   });
 

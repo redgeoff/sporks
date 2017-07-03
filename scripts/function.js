@@ -7,17 +7,15 @@ Sporks.prototype.toArgsArray = function (argsObj) {
 };
 
 Sporks.prototype.mix = function (classA, classB, fns) {
-  var copyFunction = function (fn) {
-    classB[fn] = classA[fn];
+  var copyMember = function (member) {
+    classB[member] = classA[member];
   };
 
   if (fns) {
-    fns.forEach(copyFunction);
+    fns.forEach(copyMember);
   } else {
     for (var i in classA) {
-      if (typeof classA[i] === 'function') {
-        copyFunction(i);
-      }
+      copyMember(i);
     }
   }
 };

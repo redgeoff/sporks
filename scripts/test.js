@@ -61,6 +61,8 @@ Sporks.prototype.shouldDoAndOnce = function (promise, emitter, evnt) {
 
       // We've received the event so resolve now instead of waiting for the timeout
       resolve(args);
+    }).catch(function (_err) {
+      reject(_err);
     });
 
     promiseSporks.timeout(self.WAIT_MS).then(function () {
