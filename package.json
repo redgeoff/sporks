@@ -25,9 +25,9 @@
     "node-full-test": "npm run node-test --coverage && istanbul check-coverage --lines 100 --function 100 --statements 100 --branches 100",
     "browser-server": "node_modules/gofur/scripts/browser/serve.js -c cache -t test/browser.js",
     "browser-test": "node_modules/gofur/scripts/browser/test.js -c cache -t test/browser.js",
-    "browser-test-firefox": "CLIENT=selenium:firefox node_modules/gofur/scripts/browser/test.js -c cache -t test/browser.js",
-    "browser-test-chrome": "CLIENT=selenium:chrome node_modules/gofur/scripts/browser/test.js -c cache -t test/browser.js",
-    "browser-test-phantomjs": "CLIENT=selenium:phantomjs node_modules/gofur/scripts/browser/test.js -c cache -t test/browser.js",
+    "browser-test-firefox": "node_modules/gofur/scripts/browser/test.js -c cache -t test/browser.js -b selenium:firefox",
+    "browser-test-chrome": "node_modules/gofur/scripts/browser/test.js -c cache -t test/browser.js -b selenium:chrome",
+    "browser-test-phantomjs": "node_modules/gofur/scripts/browser/test.js -c cache -t test/browser.js -b selenium:phantomjs",
     "browser-coverage-server": "node_modules/gofur/scripts/browser-coverage/serve.js -c cache -t test/browser.js",
     "browser-coverage-test": "node_modules/gofur/scripts/browser-coverage/test.js -c cache -t test/browser.js",
     "browser-coverage-report": "istanbul report --dir cache/coverage/browser --root cache/coverage/browser lcov",
@@ -52,5 +52,10 @@
     "jshint": "^2.9.4",
     "mocha": "^3.4.2",
     "request": "^2.81.0"
+  },
+  "greenkeeper": {
+    "ignore": [
+      "chai-as-promised"
+    ]
   }
 }
