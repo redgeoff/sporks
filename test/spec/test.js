@@ -35,7 +35,7 @@ describe('test', function () {
         // Do nothing as we are simulating a successful execution
       });
     } catch (err) {
-      err.message.should.eql("didn't throw err")
+      err.message.should.eql("didn't throw err");
     }
   });
 
