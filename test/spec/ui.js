@@ -11,7 +11,7 @@ describe('ui', function () {
     parentDiv.style.top = '5px';
     parentDiv.style.left = '5px';
     parentDiv.appendChild(div);
-    document.body.append(parentDiv);
+    document.body.appendChild(parentDiv);
     sporks.absolutePosition(div).should.eql({ x: 5, y: 5 })
   });
 
