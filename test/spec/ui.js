@@ -15,4 +15,10 @@ describe('ui', function () {
     sporks.absolutePosition(div).should.eql({ x: 5, y: 5 })
   });
 
+  it('should load script', function () {
+    return sporks.loadScript('https://code.jquery.com/jquery-3.2.1.min.js').then(function () {
+      $('li').addClass('bar');
+    });
+  });
+
 });
