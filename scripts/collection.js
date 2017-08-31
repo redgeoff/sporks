@@ -70,4 +70,28 @@ Sporks.prototype.flip = function (obj) {
   return values;
 };
 
+// Note: this function is only designed to work with objects created with JSON
+Sporks.prototype.isEqual = function (a, b) {
+  var self = this;
+
+  // Primitive type?
+  if ((typeof a === 'number' || typeof a === 'boolean' || typeof a === 'string') &&
+    (typeof b === 'number' || typeof b === 'boolean' || typeof b === 'string')) {
+    return a === b;
+  } else if (self.length(a) !== self.length(b)) {
+    // Number of attributes doesn't match
+    return false;
+  } else {
+    var eqls = true;
+    self.each(a, function (aVal, aKey) {
+      // Attribute missing or recursive compare fails?
+      if (!b[aKey] || !self.isEqual(aVal, b[aKey])) {
+        eqls = false;
+        return false; // End loop immediately
+      }
+    });
+    return eqls;
+  }
+};
+
 module.exports = new Sporks();
