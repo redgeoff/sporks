@@ -84,4 +84,82 @@ describe('collection', function () {
     });
   });
 
+  it('should consider primitives equal', function () {
+    var s = 'foo';
+    sporks.isEqual(s, s).should.eql(true);
+    sporks.isEqual('foo', 'foo').should.eql(true);
+    sporks.isEqual('foo', 'noo').should.eql(false);
+
+    var n = 1;
+    sporks.isEqual(n, n).should.eql(true);
+    sporks.isEqual(0, 1).should.eql(false);
+
+    var b = true;
+    sporks.isEqual(b, b).should.eql(true);
+    sporks.isEqual(false, true).should.eql(false);
+  });
+
+  it('should consider objects equal', function () {
+    sporks.isEqual({
+      foo: 'bar'
+    }, {
+      foo: 'bar'
+    }).should.eql(true);
+
+    sporks.isEqual({
+      foo: 'bar'
+    }, {
+      foo: 'nar'
+    }).should.eql(false);
+
+    sporks.isEqual({
+      foo: 'bar',
+      nar: 1
+    }, {
+      nar: 1,
+      foo: 'bar'
+    }).should.eql(true);
+
+    sporks.isEqual({
+      foo: 'bar',
+      nar: 1
+    }, {
+      nar: 1,
+      foo: 'nar'
+    }).should.eql(false);
+
+    sporks.isEqual({
+      foo: 'bar',
+      nar: 1
+    }, {
+      nar: 1,
+      foo: 'bar',
+      tar: false
+    }).should.eql(false);
+
+    sporks.isEqual({
+      inner: {
+        foo: 'bar',
+        nar: 1
+      }
+    }, {
+      inner: {
+        nar: 1,
+        foo: 'bar'
+      }
+    }).should.eql(true);
+
+    sporks.isEqual({
+      inner: {
+        foo: 'bar',
+        nar: 1
+      }
+    }, {
+      other: {
+        nar: 1,
+        foo: 'bar'
+      }
+    }).should.eql(false);
+  });
+
 });
