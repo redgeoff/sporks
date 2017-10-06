@@ -117,4 +117,28 @@ describe('promise', function () {
     });
   });
 
+  it('should wait for', function () {
+    var i = 0,
+      n = 3;
+
+    var waitForThis = function () {
+      return ++i >= n ? true : undefined;
+    };
+
+    return sporks.waitFor(waitForThis).then(function () {
+      i.should.eql(n);
+    });
+  });
+
+  it('wait for should throw if takes too long', function () {
+    var maxSleep = 500,
+      sleepMs = 100;
+    return sporks.shouldThrow(function () {
+      return sporks.waitFor(function () {
+        // This will never be ready
+        return undefined;
+      }, maxSleep, sleepMs);
+    });
+  });
+
 });
