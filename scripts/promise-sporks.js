@@ -71,4 +71,35 @@ Sporks.prototype.promisify = function (fn, thisArg) {
   };
 };
 
+Sporks.prototype.waitFor = function (poll, maxSleep, sleepMs) {
+  var totalSleep = 0;
+
+  maxSleep = maxSleep ? maxSleep : 5000;
+  sleepMs = sleepMs ? sleepMs : 100;
+
+  return new Promise(function (resolve, reject) {
+
+    var waitFor = function () {
+      // Wrap in promise so that waitMore doesn't have to be a promise
+      return Promise.resolve().then(function () {
+        return poll();
+      }).then(function (obj) {
+        if (typeof obj === 'undefined') {
+          if (totalSleep >= maxSleep) {
+            reject(new Error('waited for ' + totalSleep + ' seconds'));
+          } else {
+            totalSleep += sleepMs;
+            setTimeout(waitFor, sleepMs);
+          }
+        } else {
+          resolve(obj);
+        }
+      });
+    };
+
+    waitFor();
+
+  });
+};
+
 module.exports = new Sporks();
