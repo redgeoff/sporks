@@ -86,7 +86,7 @@ Sporks.prototype.waitFor = function (poll, maxSleep, sleepMs) {
       }).then(function (obj) {
         if (typeof obj === 'undefined') {
           if (totalSleep >= maxSleep) {
-            reject(new Error('waited for ' + totalSleep + ' seconds'));
+            reject(new Error('waited for ' + totalSleep + ' ms'));
           } else {
             totalSleep += sleepMs;
             setTimeout(waitFor, sleepMs);
