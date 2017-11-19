@@ -97,6 +97,13 @@ describe('collection', function () {
     var b = true;
     sporks.isEqual(b, b).should.eql(true);
     sporks.isEqual(false, true).should.eql(false);
+
+    var nill = null;
+    sporks.isEqual(nill, nill).should.eql(true);
+    sporks.isEqual(null, null).should.eql(true);
+    sporks.isEqual(null, undefined).should.eql(false);
+    sporks.isEqual(null, 'foo').should.eql(false);
+    sporks.isEqual(null, 1).should.eql(false);
   });
 
   it('should consider objects equal', function () {
@@ -135,6 +142,24 @@ describe('collection', function () {
       nar: 1,
       foo: 'bar',
       tar: false
+    }).should.eql(false);
+
+    sporks.isEqual({
+      foo: null
+    }, {
+      foo: null
+    }).should.eql(true);
+
+    sporks.isEqual({
+      foo: null
+    }, {
+      foo: undefined
+    }).should.eql(false);
+
+    sporks.isEqual({
+      foo: null
+    }, {
+      foo: 1
     }).should.eql(false);
 
     sporks.isEqual({
