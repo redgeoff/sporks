@@ -7,3 +7,4 @@ require('./function');
 require('./object');
 require('./promise-sporks');
 require('./test');
+require('./url');

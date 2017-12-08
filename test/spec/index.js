@@ -9,5 +9,6 @@ describe('common', function () {
   require('./obj');
   require('./promise-sporks');
   require('./test');
+  require('./url');
 
 });
