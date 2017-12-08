@@ -10,7 +10,8 @@ var modules = {
   functionSporks: functionSporks,
   objectSporks: require('./object'),
   promiseSporks: require('./promise-sporks'),
-  testSporks: require('./test')
+  testSporks: require('./test'),
+  urlSporks: require('./url')
 };
 
 // Unified API
