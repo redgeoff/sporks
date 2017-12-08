@@ -1,6 +1,6 @@
 {
   "name": "sporks",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "JS utils",
   "main": "index.js",
   "repository": {
