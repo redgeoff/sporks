@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "bluebird": "^3.5.0",
-    "events": "^1.1.1",
+    "events": "^2.0.0",
     "inherits": "^2.0.3"
   },
   "devDependencies": {
