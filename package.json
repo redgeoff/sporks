@@ -37,9 +37,9 @@
     "TODO-test-in-sauce": ""
   },
   "dependencies": {
-    "bluebird": "^3.5.3",
-    "events": "^3.0.0",
-    "inherits": "^2.0.3"
+    "bluebird": "^3.7.2",
+    "events": "^3.2.0",
+    "inherits": "^2.0.4"
   },
   "devDependencies": {
     "beautify-proj": "^1.0.0",
